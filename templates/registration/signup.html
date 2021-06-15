@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %} 
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BnB Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-image">
+                    <img class="booking-img" src="{%static 'images/form-img.jpg' %}" alt="Booking Image">
+                </div>
+                <div class="booking-form">
+                    <form id="booking-form" method="POST" name="signup">
+                        {% csrf_token %}
+                        <h2>Register Here!</h2>
+                        <div class="form-group form-input">
+                            <input type="text" name="firstname" id="firstname" value="" required/>
+                            <label for="firstname" class="form-label">Your First name</label>
+                        </div>
+
+                        <div class="form-group form-input">
+                            <input type="text" name="lastname" id="lastname" value="" required/>
+                            <label for="lastname" class="form-label">Your Last name</label>
+                        </div>
+
+                        <div class="form-group form-input">
+                            <input type="text" name="restaurant_name" id="restaurant_name" value="" required />
+                            <label for="name" class="form-label">Restaurant Name</label>
+                        </div>
+
+                        <div class="form-group form-input">
+                            <input type="email" name="email" id="email" value="" required />
+                            <label for="email" class="form-label">Email</label>
+                        </div>
+
+                        <div class="form-group form-input">
+                            <input type="number" name="mobile" id="mobile" value="" required />
+                            <label for="mobile" class="form-label">Your phone number</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" name="address_first" id="address_first" value="" required />
+                            <label for="address_first" class="form-label">Restaurant Address</label>
+                        </div>
+                        
+                        <div class="form-group form-input">
+                            <input type="number" name="fssai_number" id="fssai_number" value="" required />
+                            <label for="fssai_number" class="form-label">FASSAI No.</label>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Register" class="submit" id="submit" name="submit" />
+                            <!-- <a href="#" class="vertify-booking">Verify your booking info from your phone</a> -->
+                        </div>
+                        
+                        <div class="form-group-login text-center">
+                            <h5> Already have an account!
+                            <a href="/accounts/login">Login</a> instead</h5>
+                        </div>
+					</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

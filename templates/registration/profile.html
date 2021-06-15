@@ -1,0 +1,254 @@
+{% load static %}
+{% include "includes/base.html" %}
+{% include "includes/navbarheader.html" %} 
+{% include "includes/navtop.html"%} 
+{% include "includes/sidemenu.html" %}
+<!-- {% block title %} {{ user.username}}'s Profile {% endblock %} -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header">
+      <h1>
+        User Profile
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/mysite/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/accounts/">accounts</a></li>
+        <li class="active">User profile</li>
+      </ol>
+    </section> -->
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="content-wrapper" style="padding-left: 20%;">
+        <!-- Content Header (Page header) -->
+        <!-- <section class="content-header">
+          <h1>
+            User Profile
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/mysite/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/accounts/">accounts</a></li>
+            <li class="active">User profile</li>
+          </ol>
+        </section> -->
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <div class="row">
+            <div class="col-md-3">
+    
+              <!-- Profile Image -->
+            
+              <!-- /.box -->
+    
+              <!-- About Me Box -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Account Details</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong><i class="fa fa-user-plus margin-r-5"></i> UserName</strong>
+    
+                  <p class="text-muted">
+                    {{ user.username }}
+                  </p>
+    
+                  <hr>
+    
+                   <strong><i class="fa fa-envelope margin-r-5"></i> Email Address</strong>
+    
+                  <p class="text-muted">
+                    {{ user.email }}
+                  </p>
+    
+                  <hr>
+                   <strong><i class="fa fa-mobile margin-r-5"></i> Phone Numbers</strong>
+    
+                  <p class="text-muted">
+                    {{ user.userdetail.mobile|default:"-NA-" }}
+                  </p>
+    
+                  <hr>
+                  <strong><i class="fa fa-building margin-r-5"></i> Company</strong>
+    
+                  <p class="text-muted">
+                    {{ user.userdetail.company|default:"-NA-" }}
+                  </p>
+    
+                  <hr>
+    
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+    
+                  <p class="text-muted">{{ user.userdetail.address|default:"-NA-" }} </p>
+    
+                  <hr>
+                  <strong><i class="fa fa-building margin-r-5"></i> Website</strong>
+    
+                  <p class="text-muted">
+                    {{ user.userdetail.website|default:"-NA-" }}
+                  </p>
+    
+    
+    
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                 <!-- <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+                  <li><a href="#timeline" data-toggle="tab">Timeline</a></li>-->
+                  <li class="active"><a href="#settings" data-toggle="tab">User Profile</a></li>
+                  <li><a href="#companydetails" data-toggle="tab">Restaurant Details</a></li>
+                  <li><a href="#activity" data-toggle="tab">Change Password</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="active tab-pane" id="settings">
+                    <form class="form-horizontal" id="userprofile-form">
+    
+                        <div class="alert alert-warning alert-dismissable hide" role="alert">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+            <i class="fa fa-2x fa-rocket"></i>Something wrong happen,Try after sometime or contact with DailyMails.org Team </div>
+                        {% csrf_token %}
+                       <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">User Name</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" name="username" class="form-control" id="username" placeholder="Name" value="{{ user.username }}" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+    
+                        <div class="col-sm-10">
+                          <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ user.email }}" readonly>
+                        </div>
+                      </div>
+                     <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" name="first_name" class="form-control" id="name" placeholder="Name" value="{{ user.first_name }}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="mobile" class="col-sm-2 control-label">Mobile</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number" value="{{ user.userdetail.mobile }}">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="serving area" class="col-sm-2 control-label">Serving Areas</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" name="serving area" class="form-control" id="serving area" placeholder="Enter Serving Area" value="{{ user.userdetail.Address }}">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger" id="userprofiles_button">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+    
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="companydetails">
+                    <!-- The timeline -->
+                    <form class="form-horizontal" id="companydetails-form">
+    
+                        <div class="alert alert-warning alert-dismissable hide" role="alert">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+            <i class="fa fa-2x fa-rocket"></i>Something wrong happen,Try after sometime or contact with DailyMails.org Team </div>
+                        {% csrf_token %}
+    
+                       <div class="form-group">
+                        <label for="company" class="col-sm-2 control-label">Company Name</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="company" name="company" placeholder="Company Name" value="{{ user.userdetail.company|default:'' }}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="website" class="col-sm-2 control-label">Website</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="website" name="website" placeholder="Website" value="{{ user.userdetail.website|default:'' }}">
+                        </div>
+                      </div>
+                     <div class="form-group">
+                        <label for="address" class="col-sm-2 control-label">Address</label>
+    
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ user.userdetail.address|default:'' }}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger" id="companydetails_button">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="activity">
+                    <!-- Post -->
+                     <form class="form-horizontal" id="changepassword-form">
+                         <div class="alert alert-warning alert-dismissable hide" role="alert">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+            <i class="fa fa-2x fa-rocket"></i>Something wrong happen,Try after sometime or contact with DailyMails.org Team </div>
+    
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="new_password" class="col-sm-2 control-label">New Password</label>
+    
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="new_password" name="new_password" placeholder="New Password" value="">
+                        </div>
+                      </div>
+                     <div class="form-group">
+                        <label for="confirm_password" class="col-sm-2 control-label">Confirm Password</label>
+    
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger" id="changepassword_button">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div>
+              <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+
+      
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ 
